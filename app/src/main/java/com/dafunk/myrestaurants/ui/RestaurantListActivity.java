@@ -18,6 +18,9 @@ import com.dafunk.myrestaurants.R;
 import com.dafunk.myrestaurants.adapters.RestaurantListAdapter;
 import com.dafunk.myrestaurants.models.Restaurant;
 import com.dafunk.myrestaurants.services.YelpService;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -47,7 +50,8 @@ public class RestaurantListActivity extends AppCompatActivity {
         String location = intent.getStringExtra("location");
         getRestaurants(location);
 
-                mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
         if (mRecentAddress != null) {
             getRestaurants(mRecentAddress);
